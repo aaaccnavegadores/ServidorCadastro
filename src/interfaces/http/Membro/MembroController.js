@@ -22,9 +22,9 @@ module.exports.criarMembro = async (request, h) => {
     return h.response({ message: EnumMensagem.MEMBRO_EXISTENTE }).code(EnumCodigosHTTP.BAD_REQUEST)
   }
 
-  payload.ano_semestre_entrada = `${payload.ano_entrada}.${payload.semestre_entrada}`
-  delete payload.ano_entrada
-  delete payload.semestre_entrada
+  const anoAtual = new Date().getFullYear()
+  const semestreAtual = new Date().getMonth() < 6 ? 1 : 2
+  payload.ano_semestre_entrada = `${anoAtual}.${semestreAtual}`
   
   payload.ativo = true
   payload.concorda_termos = true

@@ -20,8 +20,6 @@ module.exports = {
     telefone: Joi.string().trim().required(),
     telefone_emergencia: Joi.string().trim().optional(),
     condicao: Joi.string().optional().allow(null),
-    ano_entrada: Joi.string().trim().required(),
-    semestre_entrada: Joi.string().trim().required(),
     categoria: Joi.string().trim().valid('discente', 'docente').required(),
     ocupacao: Joi.string().trim().valid('atleta', 'treinos', 'membro').required(),
     esportes: Joi.array().items(Joi.string().required()).optional(),
