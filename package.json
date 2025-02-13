@@ -1,0 +1,26 @@
+{
+  "name": "servidor",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@hapi/good": "^9.0.1",
+    "@hapi/good-console": "^9.0.1",
+    "@hapi/good-squeeze": "^6.0.0",
+    "@hapi/hapi": "^21.3.12",
+    "@hapi/vision": "^7.0.3",
+    "axios": "^1.7.9",
+    "hapi-api-version": "^2.3.1",
+    "joi": "^17.13.3",
+    "joi-objectid": "^4.0.2",
+    "mongodb": "^6.13.0",
+    "mongoose": "^8.10.0",
+    "nodemon": "^3.1.9"
+  }
+}
