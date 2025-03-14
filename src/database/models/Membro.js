@@ -13,7 +13,22 @@ const EnderecoSchema = new Schema({
   estado: String,
   pais: String,
 }, {
+  _id: false,
   id: false,
+  timestamps: false,
+  versionKey: false
+})
+
+const PunicaoSchema = new Schema({
+  tipo: String,
+  motivo: String,
+  artigo_estatuto_codigo: String,
+  data_inicio: Date,
+  data_fim: Date
+}, {
+  _id: false,
+  id: false,
+  timestamps: false,
   versionKey: false
 })
 
@@ -34,9 +49,10 @@ const MembroSchema = new Schema({
   ocupacao: String,
   esportes: Array,
   games: Array,
-  concorda_termos: Boolean
+  concorda_termos: Boolean,
+  atualizado: Boolean,
+  punicao: PunicaoSchema
 }, {
-  timestamps: false,
   id: false,
   toObject: { virtuals: true },
   toJSON: { virtuals: true },

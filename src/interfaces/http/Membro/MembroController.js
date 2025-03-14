@@ -7,6 +7,8 @@ module.exports.criarMembro = async (request, h) => {
   console.log(request)
   const { payload } = request
 
+  payload.cpf = payload.cpf.replace(/[.-]/g, '')
+
   const verificarMembro = {
     $or: [
       { matricula: payload.matricula },
@@ -28,6 +30,7 @@ module.exports.criarMembro = async (request, h) => {
   
   payload.ativo = true
   payload.concorda_termos = true
+  payload.atualizado = true
 
   payload.endereco.estado = "Santa Catarina",
   payload.endereco.pais = "Brasil",
