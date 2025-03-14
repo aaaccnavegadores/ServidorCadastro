@@ -32,8 +32,24 @@ module.exports.criarMembro = async (request, h) => {
   payload.concorda_termos = true
   payload.atualizado = true
 
-  payload.endereco.estado = "Santa Catarina",
-  payload.endereco.pais = "Brasil",
+  payload.endereco.estado = "Santa Catarina"
+  payload.endereco.pais = "Brasil"
+
+  let inscricao = true
+  while (inscricao) {
+    let numeroInscricao = _criarNumeroInscricao()
+
+    const verificarInscricao = {
+      inscricao: numeroInscricao
+    }
+  
+    const numeroExiste = await Membro.find(verificarInscricao)
+
+    if (!numeroExiste.length) {
+      payload.inscricao = numeroInscricao
+      inscricao = false
+    }
+  }
 
 
   console.log('[arquivo: MembroController -> funcao: criarMembro] Adicionando membro', payload)
@@ -47,6 +63,15 @@ module.exports.criarMembro = async (request, h) => {
   }
 
 }
+
+const _gerarDigito = () => {
+  return Math.round(Math.random() * 9);
+}
+
+const _criarNumeroInscricao = () => {
+  return Array.from({ length: 10 }, _gerarDigito).join('');
+}
+
 
 module.exports.buscarMembros = async (request, h) => {
 
@@ -128,6 +153,26 @@ module.exports.atualizarMembro = async (request, h) => {
   const filtro = {
     _id: membro_id
   }
+
+  if (!payload.inscricao) {
+    let inscricao = true
+
+    while (inscricao) {
+      let numeroInscricao = _criarNumeroInscricao()
+
+      const verificarInscricao = {
+        inscricao: numeroInscricao
+      }
+    
+      const numeroExiste = await Membro.find(verificarInscricao)
+
+      if (!numeroExiste.length) {
+        payload.inscricao = numeroInscricao
+        inscricao = false
+      }
+    }
+  }
+
   const atualiza = {
     $set: payload
   }

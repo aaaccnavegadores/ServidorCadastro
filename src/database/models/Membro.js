@@ -36,6 +36,7 @@ const PunicaoSchema = new Schema({
 const MembroSchema = new Schema({
   nome: String,
   matricula: String,
+  inscricao: String,
   cpf: String,
   email: String,
   endereco: EnderecoSchema,
@@ -54,6 +55,10 @@ const MembroSchema = new Schema({
   punicao: PunicaoSchema
 }, {
   id: false,
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
+  },
   toObject: { virtuals: true },
   toJSON: { virtuals: true },
   versionKey: false
