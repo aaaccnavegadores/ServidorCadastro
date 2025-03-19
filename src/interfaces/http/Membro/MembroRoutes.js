@@ -70,7 +70,7 @@ module.exports = [
       description: 'atualiza membro',
       tags: [ 'membros' ],
       validate: {
-        payload: MembroSchema.postMembroSchema,
+        payload: MembroSchema.putMembroSchema,
         params: MembroSchema.MembroIdSchema
       }
     }

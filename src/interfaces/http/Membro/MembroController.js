@@ -173,6 +173,8 @@ module.exports.atualizarMembro = async (request, h) => {
     }
   }
 
+  payload.atualizado = true
+
   const atualiza = {
     $set: payload
   }
