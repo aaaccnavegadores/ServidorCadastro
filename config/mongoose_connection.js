@@ -1,11 +1,19 @@
 const fs = require('fs')
 const path = require('path')
 
+const {
+  DB_USER,
+  DB_PASSWORD,
+  DB_CLUSTER,
+  DATABASE,
+  DB_APPNAME
+} = process.env
+
 const mongoose = require('mongoose')
 
 mongoose.set('strictPopulate', false)
 
-const connectionString = 'mongodb+srv://aaaccnavegadores:lane2005celta@membrosnavegadores.v59vh.mongodb.net/navegadores?retryWrites=true&w=majority&appName=MembrosNavegadores'
+const connectionString = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_CLUSTER}.v59vh.mongodb.net/${DATABASE}?retryWrites=true&w=majority&appName=${DB_APPNAME}`
 
 
 mongoose.connection.on('connected', () => {

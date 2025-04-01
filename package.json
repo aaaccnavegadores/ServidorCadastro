@@ -16,6 +16,7 @@
     "@hapi/hapi": "^21.3.12",
     "@hapi/vision": "^7.0.3",
     "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
     "hapi-api-version": "^2.3.1",
     "joi": "^17.13.3",
     "joi-objectid": "^4.0.2",

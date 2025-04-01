@@ -7,6 +7,7 @@ const {
 
   
 registerModels(__dirname + '/src/database/models')
+require('dotenv').config()
 
 const fs = require('fs')
 const Hapi = require('@hapi/hapi')
