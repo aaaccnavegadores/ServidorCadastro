@@ -10,6 +10,7 @@ registerModels(__dirname + '/src/database/models')
 
 const fs = require('fs')
 const Hapi = require('@hapi/hapi')
+const Boom = require('@hapi/boom')
 const Vision = require('@hapi/vision')
 const HapiApiVersion = require('hapi-api-version')
 const options = {
@@ -64,6 +65,10 @@ const server = new Hapi.Server({
     },
     validate: {
       failAction: async (request, h, err) => {
+        if (err.details[0].context.key === 'authorization') {
+          console.error('ValidationError:', err.message)
+          throw Boom.unauthorized('Não autorizado')
+        }
         console.error(JSON.stringify(err))
         console.error(err.details)
         throw err
